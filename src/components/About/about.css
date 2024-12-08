@@ -1,0 +1,85 @@
+/* AboutCard.css */
+
+/* Style pour le texte avec couleur pour certaines parties */
+.purple {
+  color: #800080;
+}
+
+/* Liste des activités avec animation */
+.about-activity {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.about-activity .emoji {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 25px;  /* Taille plus grande pour les emojis */
+}
+
+/* Animation pour la feuille */
+.about-activity .emoji.feuille {
+  animation: souffle 2s infinite;
+}
+
+@keyframes souffle {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-10deg) scale(0.9);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.1);
+  }
+  75% {
+    transform: rotate(-5deg) scale(0.95);
+  }
+}
+
+/* Animation de rebond pour le basket */
+.about-activity .emoji.basket {
+  animation: rebond 1.2s infinite;
+}
+
+@keyframes rebond {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Animation pour l'avion */
+.about-activity .emoji.avion {
+  animation: senvoler 3s infinite;
+}
+
+@keyframes senvoler {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-15px) translateX(5px);
+  }
+  100% {
+    transform: translateY(-30px) translateX(10px);
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quote-card-view {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  padding: 20px;
+}
