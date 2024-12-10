@@ -1,21 +1,30 @@
 const fs = require('fs');
 const path = require('path');
 
-// Le chemin vers ton fichier index.html dans le dossier build
-const indexPath = path.join(__dirname, 'build', 'index.html');
+// Chemin vers ton index.html dans le build
+const buildPath = path.join(__dirname, 'build', 'index.html');
 
-fs.readFile(indexPath, 'utf8', (err, data) => {
-  if (err) throw err;
+// Lit le fichier index.html
+fs.readFile(buildPath, 'utf8', (err, data) => {
+  if (err) {
+    console.log(err);
+    return;
+  }
 
-  // On ajoute la balise <base href="/portfolio/"> juste avant la fermeture de la balise </head>
-  const updatedData = data.replace(
-    '</head>',
-    '  <base href="/portfolio/">\n</head>'
-  );
+  // Ajoute la balise <base> si elle n'existe pas déjà
+  if (!data.includes('<base href="/portfolio/">')) {
+    const updatedData = data.replace(
+      '<head>',
+      `<head>\n  <base href="/portfolio/">`
+    );
 
-  // On réécrit le fichier index.html avec la balise ajoutée
-  fs.writeFile(indexPath, updatedData, 'utf8', (err) => {
-    if (err) throw err;
-    console.log('La balise <base> a été ajoutée avec succès à index.html');
-  });
+    // Écris les modifications dans index.html
+    fs.writeFile(buildPath, updatedData, 'utf8', (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Base tag added successfully!');
+      }
+    });
+  }
 });
